@@ -1,7 +1,7 @@
 FROM n8nio/n8n:latest
 
-# Base de datos - usando la URL pública para mejor conectividad
-ENV DATABASE_URL="postgresql://postgres:LmlHRRyBQKKGqAWOoUINpWJZHwpApUbG@junction.proxy.rlwy.net:17677/railway"
+# Configuración de base de datos
+ENV DATABASE_URL=${DATABASE_URL}
 
 # Configuración básica de n8n
 ENV N8N_PORT=5678
