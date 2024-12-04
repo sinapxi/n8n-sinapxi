@@ -1,24 +1,17 @@
 FROM n8nio/n8n:latest
 
-ENV DB_TYPE=postgresdb
-ENV DB_POSTGRESDB_DATABASE=railway
-ENV DB_POSTGRESDB_HOST=postgres.railway.internal
-ENV DB_POSTGRESDB_PORT=5432
-ENV DB_POSTGRESDB_USER=postgres
-ENV DB_POSTGRESDB_PASSWORD=${PGPASSWORD}
+# Base de datos - usando la URL pública para mejor conectividad
+ENV DATABASE_URL="postgresql://postgres:LmlHRRyBQKKGqAWOoUINpWJZHwpApUbG@junction.proxy.rlwy.net:17677/railway"
 
-# Configuraciones SSL para PostgreSQL
-ENV DB_POSTGRESDB_SSL=true
-ENV DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
-
+# Configuración básica de n8n
 ENV N8N_PORT=5678
 ENV NODE_ENV=production
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
 ENV N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
 
-# Otras configuraciones
+# Configuración de seguridad y encriptación
+ENV N8N_ENCRYPTION_KEY="n8n-sinapxi-railway-key-2024"
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
-ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 EXPOSE 5678
