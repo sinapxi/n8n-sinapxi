@@ -9,7 +9,6 @@ ENV DB_POSTGRESDB_PASSWORD=${PGPASSWORD}
 
 # Configuraciones SSL para PostgreSQL
 ENV DB_POSTGRESDB_SSL=true
-ENV DB_POSTGRESDB_SSL_CA=/etc/ssl/certs/ca-certificates.crt
 ENV DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 ENV N8N_PORT=5678
@@ -20,8 +19,6 @@ ENV N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
 
 # Otras configuraciones
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
-
-# Instalar certificados SSL
-RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 EXPOSE 5678
